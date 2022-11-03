@@ -1,0 +1,23 @@
+{
+  "name": "express-base",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: No test defined.\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vicentezaror/express-base.git"
+  },
+  "keywords": [],
+  "author": "Vicente Zaror <vicente@kydor.net> (https://kydor.net/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vicentezaror/express-base/issues"
+  },
+  "homepage": "https://github.com/vicentezaror/express-base#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

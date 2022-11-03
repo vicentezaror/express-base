@@ -1,0 +1,49 @@
+version: '3.3'
+
+services:
+    mysql:
+      container_name: mysql
+      image: mysql:5.7
+      environment:
+          - MYSQL_DATABASE=database
+          - MYSQL_USER=
+          - MYSQL_ROOT_PASSWORD=password
+          - MYSQL_PORT=3306
+      ports:
+          - 3306:3306
+      volumes:
+          - ./mysql:/var/lib/mysql
+
+    phpmyadmin:
+      container_name: phpmyadmin
+      image: phpmyadmin/phpmyadmin
+      environment:
+          - MYSQL_ROOT_PASSWORD=password
+          - PMA_HOST=mysql
+      ports:
+          - 8080:80
+      depends_on:
+          - mysql
+
+    postgres:
+      container_name: postgres
+      image: postgres:9.6
+      environment:
+          - POSTGRES_DB=database
+          - POSTGRES_USER=
+          - POSTGRES_PASSWORD=password
+      ports:
+          - 5432:5432
+      volumes:
+          - ./postgres:/var/lib/postgresql/data
+    
+    pgadmin:
+      container_name: pgadmin
+      image: dpage/pgadmin4
+      environment:
+          - PGADMIN_DEFAULT_EMAIL=
+          - PGADMIN_DEFAULT_PASSWORD=password
+      ports:
+          - 5050:80
+      depends_on:
+          - postgres

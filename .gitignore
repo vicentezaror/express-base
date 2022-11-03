@@ -41,6 +41,10 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Dockerized databases volumes
+mysql/
+postgres/
+
 # TypeScript v1 declaration files
 typings/
 
