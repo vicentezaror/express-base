@@ -2,7 +2,7 @@ import express, { Router } from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import helmet from 'helmet';
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 // import { router } from './routes/index.js';
 // import {
 //     logErrors,
@@ -11,7 +11,6 @@ import dotenv from 'dotenv';
 //     errorHandler
 // } from './src/middlewares/error.handler';
 
-dotenv.config();
 
 const app = express();
 
@@ -38,6 +37,10 @@ const corsOptions = {
     maxAge: 86400,
 };
 app.use(cors(corsOptions));
+
+app.use('/test', (req, res) => {
+    res.send('Hello World!');
+});
 
 // router(app);
 
