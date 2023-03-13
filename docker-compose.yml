@@ -3,7 +3,7 @@ version: '3.3'
 services:
     mysql:
       container_name: mysql
-      image: mysql:5.7
+      image: mysql:8.0.32
       environment:
           - MYSQL_DATABASE=database
           - MYSQL_USER=

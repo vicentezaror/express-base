@@ -1,4 +1,4 @@
-import boom from "@hapi/boom";
+const boom = require("@hapi/boom");
 
 function validatorHandler(schema, property) {
   return (req, res, next) => {

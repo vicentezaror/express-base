@@ -1,15 +1,15 @@
-import express, { Router } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import helmet from 'helmet';
-import { config } from 'dotenv';
-// import { router } from './routes/index.js';
-// import {
-//     logErrors,
-//     ormErrorHandler,
-//     boomErrorHandler,
-//     errorHandler
-// } from './src/middlewares/error.handler';
+const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
+const helmet = require('helmet');
+require('dotenv').config;
+const routes =  require('./routes');
+const {
+    logErrors,
+    ormErrorHandler,
+    boomErrorHandler,
+    errorHandler
+} = require('./middlewares/error.handler');
 
 
 const app = express();
@@ -26,7 +26,7 @@ const ALLOWED_ORIGINS =
     || ['http://localhost:3000'];
 
 const corsOptions = {
-    origin: (origin: any, callback: any) => {
+    origin: (origin, callback) => {
         if (!origin || ALLOWED_ORIGINS.indexOf(origin) !== -1) {
             callback(null, true);
         } else {
@@ -38,15 +38,15 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-app.use('/test', (req, res) => {
+app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-// router(app);
+app.use(routes);
 
-// app.use(logErrors);
-// app.use(ormErrorHandler);
-// app.use(boomErrorHandler);
-// app.use(errorHandler);
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(ormErrorHandler);
+app.use(errorHandler);
 
-export default app;
+module.exports = app;
