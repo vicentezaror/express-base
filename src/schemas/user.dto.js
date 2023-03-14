@@ -22,12 +22,12 @@ const createUserSchema = Joi.object({
 })
 
 const updateUserSchema = Joi.object({
-  firstName: firstName,
-  lastName: lastName,
-  phone: phone,
-  email: email,
-  password: password,
-  birthDay: birthDay
+  firstName,
+  lastName,
+  phone,
+  email,
+  password,
+  birthDay
 }).min(1)
 
 module.exports = {
